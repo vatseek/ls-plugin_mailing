@@ -48,7 +48,8 @@ before_script:
   - sudo mkdir -p /var/mail/sendmail/tmp
   - sudo chmod -R 0777 /var/mail/sendmail
 
-  - echo 'sendmail_path = /usr/bin/sendmailex.sh' >> /etc/php5/apache2/php.ini
+  - sudo sed -i s/";sendmail_path ="/"sendmail_path = \/test.sh"/ /etc/php5/apache2/php.ini
+  - sudo /etc/init.d/apache2 restart
 
   - sudo chmod +x $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
   - sh $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
