@@ -47,12 +47,8 @@ before_script:
   - sudo mkdir -p /var/mail/sendmail/tmp
   - sudo chmod -R 0777 /var/mail/sendmail
 
-  #- sudo sed -i s/";sendmail_path ="/"sendmail_path = \/usr\/bin\/sendmailex.sh"/ /etc/php5/apache2/php.ini
   - echo 'echo "sendmail_path = /usr/bin/sendmailex.sh" >> /etc/php5/apache2/php.ini' | sudo sh
-
   - sudo /etc/init.d/apache2 restart
-
-  - cat /etc/php5/apache2/php.ini
 
   - rm -rf ./install
   - wget -S http://livestreet.test/ -O /dev/null
@@ -72,7 +68,8 @@ before_script:
 script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/mailing/tests/behat/behat.yml' --strict
 
 after_script:
-  - sleep 5
+  - sudo chmod a+x $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
+  - sudo $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
 
   - sudo ls -la /var/mail/sendmail/cur
   - sudo ls -la /var/mail/sendmail/new
