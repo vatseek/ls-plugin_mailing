@@ -43,6 +43,8 @@ class FeatureContext extends MinkContext
 
         $response = shell_exec("{$this->sDirRoot}/plugins/mailing/include/cron/send-mail.php");
 
+        var_dump($response);
+
         if (!strpos($response, '2 of 2 messages sended successful')) {
             throw new ExpectationException('Messages not send (invalid script response)', $this->getSession());
         }
