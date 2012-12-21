@@ -75,6 +75,6 @@ after_script:
 
   - sleep 5
 
-  - sudo ld -la /var/mail/sendmail/cur
-  - sudo ld -la /var/mail/sendmail/new
-  - sudo ld -la /var/mail/sendmail/tmp
+  - sudo ls -la /var/mail/sendmail/cur
+  - sudo ls -la /var/mail/sendmail/new
+  - sudo ls -la /var/mail/sendmail/tmp
