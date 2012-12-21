@@ -13,6 +13,9 @@ before_script:
   - mkdir -p plugins/mailing && cp -a /tmp/plugins/mailing/* plugins/mailing
   - echo "mailing" > ./plugins/plugins.dat
 
+  - cPath=$PWD
+  - echo $cPath
+
   # change application working folders for write access
 
   - mkdir -p ./templates/compiled/synio/
@@ -37,8 +40,6 @@ before_script:
 
   # Set fail sendmail engine
 
-  - $cPath=$PWD
-  - echo $cPath
   - sudo cp $cPath'plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
   - sudo chmod +x /usr/bin/sendmailex.sh
 
