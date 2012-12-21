@@ -171,8 +171,6 @@ class PluginMailing_ModuleMailing extends Module
             $this->Mail_SetBody($sText);
             $this->Mail_setHTML();
 
-            var_dump($sText);
-
             if ($this->Mail_Send()) {
                 return $this->SetSended($oMail->getId());
             }

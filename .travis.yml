@@ -40,7 +40,7 @@ before_script:
   # Set fail sendmail engine
 
   - sudo cp $cPath'/plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
-  - sudo chmod +x /usr/bin/sendmailex.sh
+  - sudo chmod a+x /usr/bin/sendmailex.sh
 
   - sudo mkdir -p /var/mail/sendmail/cur
   - sudo mkdir -p /var/mail/sendmail/new
@@ -71,8 +71,6 @@ before_script:
 script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/mailing/tests/behat/behat.yml' --strict
 
 after_script:
-  - sudo $cPath'/plugins/mailing/include/cron/send-mail.php'
-
   - sleep 5
 
   - sudo ls -la /var/mail/sendmail/cur
