@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 prefix="/var/mail/sendmail/new"
 numPath="/var/mail/sendmail"
 
