@@ -40,7 +40,7 @@ before_script:
 
   # Set fail sendmail engine
 
-  - sudo cp $cPath'plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
+  - sudo cp $cPath'/plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
   - sudo chmod +x /usr/bin/sendmailex.sh
 
   - sudo mkdir -p /var/mail/sendmail/cur
