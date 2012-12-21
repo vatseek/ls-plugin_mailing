@@ -48,11 +48,11 @@ before_script:
   - sudo chmod -R 0777 /var/mail/sendmail
 
   #- sudo sed -i s/";sendmail_path ="/"sendmail_path = \/usr\/bin\/sendmailex.sh"/ /etc/php5/apache2/php.ini
-  - echo "echo "sendmail_path = /usr/bin/sendmailex.sh" >> /etc/php5/apache2/php.ini" | sudo sh
+  - echo 'echo "sendmail_path = /usr/bin/sendmailex.sh" >> /etc/php5/apache2/php.ini' | sudo sh
 
   - sudo /etc/init.d/apache2 restart
 
-  - cat /etc/php5/apache2/php.ini | grep sendmail
+  - cat /etc/php5/apache2/php.ini
 
   - rm -rf ./install
   - wget -S http://livestreet.test/ -O /dev/null
