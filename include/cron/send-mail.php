@@ -40,7 +40,9 @@ class SendMailingNotifies extends Cron
 
         $sendCount = 0;
         foreach ($aMails as $oMail) {
-            $sendCount += (int) $this->oEngine->PluginMailing_ModuleMailing_SendMail($oMail);
+            $res = $this->oEngine->PluginMailing_ModuleMailing_SendMail($oMail);
+            var_dump($res);
+            $sendCount += (int) $res;
         }
 
         echo PHP_EOL . "- {$sendCount} of " . count($aMails) . " messages sended successful." . PHP_EOL ;
