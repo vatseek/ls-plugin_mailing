@@ -30,6 +30,7 @@ before_script:
   # launch apache, MySQL and PHPUnit Selenium installers
   - ./tests/travis/apache_setup.sh
   - ./tests/travis/mysql_setup.sh
+  - mysql -u root -B social_test < ./plugins/mailing/activate.sql
   - mysql -u root -e "USE social_test; SHOW TABLES;" | wc -l
   - cp ./config/config.test.php.dist config/config.test.php
   - cp ./config/config.test.php.dist config/config.local.php
@@ -54,7 +55,7 @@ before_script:
   - sudo chmod +x $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
   - sh $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
 
-  #------------------------------------------------
+  - cat /etc/php5/apache2/php.ini
 
   - rm -rf ./install
   - wget -S http://livestreet.test/ -O /dev/null
