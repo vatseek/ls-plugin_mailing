@@ -13,6 +13,8 @@ Feature: Mailing plugin standart features BDD
 
         Then I press "Preview"
 
+        Then print last response
+
         Then I should see in element by css "text_preview" values:
         | value |
         | test message for users |

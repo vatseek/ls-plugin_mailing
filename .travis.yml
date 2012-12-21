@@ -37,7 +37,6 @@ before_script:
   - sudo /etc/init.d/mysql restart
   - sleep 5
 
-
   # Set fail sendmail engine
 
   - sudo cp $cPath'/plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
@@ -70,3 +69,12 @@ before_script:
   - sleep 5
 
 script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/mailing/tests/behat/behat.yml' --strict
+
+after_script:
+  - sh $cPath'/plugins/mailing/include/cron/send-mail.php'
+
+  - sleep 5
+
+  - sudo ld -la /var/mail/sendmail/cur
+  - sudo ld -la /var/mail/sendmail/new
+  - sudo ld -la /var/mail/sendmail/tmp
