@@ -41,7 +41,6 @@ class SendMailingNotifies extends Cron
         $sendCount = 0;
         foreach ($aMails as $oMail) {
             $res = $this->oEngine->PluginMailing_ModuleMailing_SendMail($oMail);
-            var_dump($res);
             $sendCount += (int) $res;
         }
 

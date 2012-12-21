@@ -10,7 +10,7 @@ class mailingFixtures extends AbstractFixtures
 {
     public function load()
     {
-
+         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
     }
 }
 

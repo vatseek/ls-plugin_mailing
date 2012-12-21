@@ -140,6 +140,9 @@ class PluginMailing_ModuleMailing extends Module
      */
     public function SendMail($oMail)
     {
+
+        var_dump($oMail->getMailingTalk() . '---------');
+
         if ($oMail->getMailingTalk()) {
             if (!isset($_SERVER['REMOTE_ADDR'])) {
                 $_SERVER['REMOTE_ADDR'] = Config::Get('IP_SENDER');
@@ -157,10 +160,10 @@ class PluginMailing_ModuleMailing extends Module
                 $this->Notify_SendTalkNew($oUserToMail, $oUserCurrent, $oTalk);
                 $this->SetTalkIdForSendedMail($oMail->getId(), $oTalk->getId());
                 $this->SetSended($oMail->getId());
-
+                var_dump('-------returm3------');
                 return true;
             }
-
+            var_dump('-------returm2------');
             return false;
 
         } else {
@@ -176,6 +179,8 @@ class PluginMailing_ModuleMailing extends Module
             if ($this->Mail_Send()) {
                 return $this->SetSended($oMail->getId());
             }
+
+            var_dump('-------returm1------');
             return false;
         }
     }
