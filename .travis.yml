@@ -14,7 +14,6 @@ before_script:
   - echo "mailing" > ./plugins/plugins.dat
 
   - cPath=$PWD
-  - echo $cPath
 
   # change application working folders for write access
 
@@ -54,8 +53,6 @@ before_script:
 
   - sudo chmod +x $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
   - sh $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
-
-  - cat /etc/php5/apache2/php.ini
 
   - rm -rf ./install
   - wget -S http://livestreet.test/ -O /dev/null
