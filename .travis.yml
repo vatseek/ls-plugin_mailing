@@ -69,7 +69,7 @@ script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plug
 
 after_script:
   - sudo chmod a+x $cPath'/plugins/mailing/tests/fixtures/script/test.php'
-  - sudo sh $cPath'/plugins/mailing/tests/fixtures/script/test.sh'
+  - sudo sh $cPath'/plugins/mailing/tests/fixtures/script/test.php'
 
   - sudo ls -la /var/mail/sendmail/cur
   - sudo ls -la /var/mail/sendmail/new
