@@ -13,15 +13,17 @@ Feature: Mailing plugin standart features BDD
         Then I fill in "subject" with "test subject"
         Then I fill in "talk_text" with "test message for users"
 
-        Then I press element by css "input[name='submit_preview']"
+        #Then I press element by css "input[name='submit_preview']"
 
-        Then print last response
-
-        Then I should see in element by css "text_preview" values:
-        | value |
-        | test message for users |
+        #Then I should see in element by css "text_preview" values:
+        #| value |
+        #| test message for users |
 
         Then I press element by css "input[name='submit']"
+
+        Then I wait "1000"
+
+        Then print last response
 
         # Go to mailing list page and check for just create mailing
         Given I am on "/mailing/list"
