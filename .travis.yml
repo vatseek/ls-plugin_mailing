@@ -71,7 +71,7 @@ before_script:
 script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/mailing/tests/behat/behat.yml' --strict
 
 after_script:
-  - sudo sh $cPath'/plugins/mailing/include/cron/send-mail.php'
+  - sudo $cPath'/plugins/mailing/include/cron/send-mail.php'
 
   - sleep 5
 
