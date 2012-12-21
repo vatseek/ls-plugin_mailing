@@ -25,6 +25,7 @@ Feature: Mailing plugin standart features BDD
 
         Then print last response
 
+
         # Go to mailing list page and check for just create mailing
         Given I am on "/mailing/list"
         Then I should see in element by css "content" values:
