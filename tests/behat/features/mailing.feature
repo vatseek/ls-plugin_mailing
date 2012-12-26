@@ -25,4 +25,7 @@ Feature: Mailing plugin standart features BDD
 
         Then I wait "1000"
 
-        Then run send message script
+        #Then run send message script
+        Then run script "/plugins/mailing/include/cron/send-mail.php" and result should contain "/2 of 2 messages sended successful/"
+
+        Then check is mail on dir

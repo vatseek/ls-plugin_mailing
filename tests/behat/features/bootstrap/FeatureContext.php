@@ -33,24 +33,11 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @Then /^run send message script$/
+     * @Then /^check is mail on dir$/
      */
-    public function runSendMessageScript()
+    public function checkIsMailOnDir()
     {
-        if (!file_exists("{$this->sDirRoot}/plugins/mailing/include/cron/send-mail.php")) {
-            throw new ExpectationException('Script file not found', $this->getSession());
-        }
-
-        $response = shell_exec("{$this->sDirRoot}/plugins/mailing/include/cron/send-mail.php");
-
-        var_dump($response);
-
-        if (!strpos($response, '2 of 2 messages sended successful')) {
-            throw new ExpectationException('Messages not send (invalid script response)', $this->getSession());
-        }
-
         sleep(1);
-
         $exclude_list = array(".", "..");
         $directories = array_diff(scandir('/var/mail/sendmail/new'), $exclude_list);
 
@@ -58,6 +45,7 @@ class FeatureContext extends MinkContext
             throw new ExpectationException('Messages not send (not is dir)', $this->getSession());
         }
     }
+
 
     /**
      * @Then /^run generate unsubscribe code$/
