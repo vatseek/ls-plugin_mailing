@@ -39,7 +39,7 @@ before_script:
 
   # Set fail sendmail engine
 
-  - sudo cp $cPath'/plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
+  - sudo cp ./plugins/mailing/tests/fixtures/script/sendmailex.sh' /usr/bin/sendmailex.sh
   - sudo chmod a+x /usr/bin/sendmailex.sh
 
   - sudo mkdir -p /var/mail/sendmail/cur
@@ -47,8 +47,8 @@ before_script:
   - sudo mkdir -p /var/mail/sendmail/tmp
   - sudo chmod -R 0777 /var/mail/sendmail
 
-  - echo 'echo "sendmail_path = /usr/bin/sendmailex.sh" >> /etc/php5/apache2/php.ini' | sudo sh
-  - echo 'echo "sendmail_path = /usr/bin/sendmailex.sh" >> /etc/php5/cli/php.ini' | sudo sh
+  - php_conf_path=`php --ini|grep "Configuration File (php.ini) Path"|cut -d " " -f5`
+  - sudo cp ./plugins/mailing/tests/fixtures/config/php.ini $php_conf_path/php.ini
   - sudo /etc/init.d/apache2 restart
 
   - rm -rf ./install
